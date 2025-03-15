@@ -1,0 +1,102 @@
+Name : AKSH BHANUDAS NAIK
+Roll no : 48
+Student id : 5133127
+Practical: 6
+Aim : JOINS
+
+
+---------------------------------------------------------------------------------------------------
+
+create table A( Id int primary key,Name varchar(20));
+insert into A values
+(1,"fox"),
+(2,"cop"),
+(3,"taxi"),
+(6,"washington"),
+(7,"dell"),
+(5,"arizona"),
+(4,"lincon"),
+(10,"lucent");
+
+---------------------------------------------------------------------------------------------------
+
+create table B(Id int primary key,Name varchar(20));
+insert into B values
+(1,"trot"),
+(2,"car"),
+(3,"cab"),
+(6,"monument"),
+(7,"pc"),
+(8,"microsoft"),
+(9,"apple"),
+(11,"scotch");
+
+---------------------------------------------------------------------------------------------------
+
+INNER JOIN
+
+select * from A inner join B on A.Id=B.Id;
+
+---------------------------------------------------------------------------------------------------
+
+LEFT OUTER JOIN
+
+select * from A left outer join B on A.Id=B.Id;
+
+---------------------------------------------------------------------------------------------------
+
+RIGHT OUTER JOIN
+
+select * from A right outer join B on A.Id=B.Id;
+
+---------------------------------------------------------------------------------------------------
+
+FULL OUTER JOIN
+
+select * from A full outer join B on A.Id=B.Id;
+
+---------------------------------------------------------------------------------------------------
+
+CROSS JOIN
+
+select * from A cross join B ;
+
+---------------------------------------------------------------------------------------------------
+
+PRACTICE QUESTION
+create table ABC( ID int );
+create table PQR(ID int );
+
+INSERT into ABC values
+(10),
+(20),
+(20),
+(30),
+(10);
+
+SELECT * FROM ABC;
+
+INSERT into PQR values
+(10),
+(20),
+(40),
+(50);
+
+SELECT * FROM PQR;
+
+-- INNER JOIN 
+SELECT * FROM ABC inner join PQR ON ABC.ID=PQR.ID;
+
+-- RIGHT OUTER JOIN
+SELECT * FROM ABC right outer join PQR ON ABC.ID=PQR.ID;
+
+-- LEFT OUTER JOIN 
+SELECT * FROM ABC left outer join PQR ON ABC.ID=PQR.ID;
+
+--FULL OUTER JOIN 
+SELECT * FROM ABC full outer join PQR ON ABC.ID=PQR.ID;
+
+-- CROSS JOIN 
+SELECT * FROM ABC cross join PQR ;
+
+---------------------------------------------------------------------------------------------------

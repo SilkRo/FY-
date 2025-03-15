@@ -1,0 +1,68 @@
+Student ID-5133127
+Roll No.-48
+Name- Aksh Naik
+PRACTICAL 2
+AIM -DML commands
+
+--PRACTICAL 2
+
+create table jobs(
+  job_id int,
+  job_name varchar(20),
+  job_department varchar(20),
+  min_salary int,
+  max_salary int,
+  state varchar(20),
+  HRA varchar(20),
+  DA varchar(20),
+  Gross_sal int);
+  
+  insert into jobs values
+(101,"HR","Business",20000,87000,"mh","5600","800",45236),
+(102,"Sales","Sales",20000,65000,"pj","4500","500",43222),
+(103,"HR","Business",30000,32000,"mh","4600","800",45236),
+(104,"Production","Business",25000,45000,"hr","2300","200",65244),
+(105,"Engineer","Production",35000,55000,"md","4100","500",65000);
+
+--DML Commands
+
+update jobs
+set
+job_name="sales"
+where
+ job_id=101;
+ 
+ update jobs
+set
+min_salary=40000
+where
+ job_id=101 or 102;
+ 
+update jobs 
+set
+DA='500'
+where 
+DA='800';
+
+delete
+from
+jobs
+where
+job_id=104;
+
+delete
+from
+jobs
+where
+state='pj'or 'md';
+
+select job_id,min_salary,max_salary,Gross_sal from jobs;
+select job_name,state from jobs where min_salary=40000;
+
+
+select avg(Gross_sal) as Avarage_Gross_sal from jobs;
+select *,sum(HRA)as total_HRA from jobs;
+
+select min(min_salary)as minimum_salary from jobs;
+select max(max_salary)as maximum_salary from jobs;
+select count(job_id) as total_jobs from jobs;

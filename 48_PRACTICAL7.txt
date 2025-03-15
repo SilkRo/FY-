@@ -1,0 +1,109 @@
+NAME :- Aksh Bhanudas Naik
+Student ID:- 5133127
+Roll No. :- 48
+practical :- 7
+Aim :-
+
+---------------------------------------------------------------------------------------------------
+
+create table dept (dept_id int,
+dept_name varchar(50));
+create table emp(emp_id int ,
+emp_name varchar(30),
+emp_sal int,
+dept_id int);
+create table branch(branch_id varchar(10),
+branch_name varchar(30),
+branch_code varchar(20),emp_id int,
+dept_id int
+);
+insert  into dept values
+(101,"production"),
+(102,"HR"),
+(103,"sales"),
+(104,"chemical"),
+(105,"textiles");
+
+insert into emp values
+(201,"ram",40000,101),
+(202,"rahi",50000,102),
+(203,"siya",40000,103),
+(206,"manya",70000,107);
+
+insert into branch values 
+("abc","product","P-101",201,101),
+("xyz","HR","H-102",202,102),
+("pqr","textiles","T-105",205,105),
+("mnc","market","M-106",206,106);
+
+---------------------------------------------------------------------------------------------------
+
+select branch_id,branch_name from branch
+where branch_code='P-101';
+
+Output:
+
+branch_id  branch_name                   
+---------- ------------------------------
+abc        product          
+
+---------------------------------------------------------------------------------------------------
+
+select emp_id,dept_id,emp_name 
+from emp
+where dept_id in (select dept_id from  dept where dept_id > 101);
+
+Output:
+
+
+emp_id      dept_id     emp_name                      
+----------- ----------- ------------------------------
+        202         102 rahi                          
+        203         103 siya   
+		
+---------------------------------------------------------------------------------------------------
+
+select emp_id,dept_id,emp_sal-10000 as sal 
+from emp 
+where emp_sal >50000 ;
+
+Output:
+
+emp_id      dept_id     sal        
+----------- ----------- -----------
+        206         107       60000
+		
+---------------------------------------------------------------------------------------------------
+
+select avg(emp_sal) as avarage_salary from emp;
+
+Output:
+
+avarage_salary
+--------------
+         50000
+		 
+---------------------------------------------------------------------------------------------------
+
+select dept_id,emp_id,branch_name from branch 
+where dept_id in (select dept_id where dept_id > 103);
+
+Output:
+
+dept_id     emp_id      branch_name                   
+----------- ----------- ------------------------------
+        105         205 textiles                      
+        106         206 market     
+		
+---------------------------------------------------------------------------------------------------
+
+select * from branch where emp_id in ( select emp_id from emp where emp_id < 205);
+
+Output:
+
+branch_id  branch_name                    branch_code          emp_id      dept_id    
+---------- ------------------------------ -------------------- ----------- -----------
+abc        product                        P-101                        201         101
+xyz        HR                             H-102                        202         102
+
+---------------------------------------------------------------------------------------------------

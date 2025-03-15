@@ -1,0 +1,58 @@
+--PRACTICAL  1
+create table market(
+  market_no varchar(20),
+  market_name varchar(20),
+  market_place varchar(20),
+  market_stack int,
+  market_price int
+  );
+  
+insert into market values
+("v101","apana","pune",14,2000000),
+("p102","shahi","mumbai",178,50000),
+("f103","leesha","pune",98,7000000),
+("p104","PDshah","nashik",74,12000000),
+("k105","Bhavan","thane",64,60000),
+("g106","mandi","dadar",61,500000);
+
+select * from market;
+
+select * from market where market_place='pune';
+
+select market_no,market_place from market where market_price>80000;
+
+select market_no,market_name,market_stack from market where market_stack<90;
+
+ALTER TABLE market
+ADD market_share varchar(20);
+
+ALTER TABLE market
+MODIFY market_no int;
+
+
+ALTER TABLE market
+DROP market_place;
+
+
+ALTER TABLE market
+RENAME market_name TO name;
+
+ALTER TABLE market
+RENAME TO market_info;
+
+DROP table Customers
+select *from  Customers;
+​
+DELETE TABLE Orders;
+
+​
+ALTER TABLE market
+ADD status varchar(20);
+​
+ALTER TABLE market
+rename market_stack to available;
+DROP TABLE Shippings
+​
+ALTER TABLE market
+ADD market_region varchar(20);
+

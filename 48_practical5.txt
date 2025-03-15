@@ -1,0 +1,213 @@
+Name : Aksh Bhanudas Nail
+Roll no : 48
+Student id : 5133127
+Practical: 5
+Aim :constraints
+
+
+----------------------------------------------------------------------------------------------------------------------
+create table users (id int ,full_name varchar(30) ,enabled varchar(30),last_login varchar(30) ;
+
+insert into users values (1 ,"John Smith ", "f" , "2017-10-25 10:26:10.015152");
+insert into users values (2,"Alan Walker ", "t" , "2017-10-25 10:26:50.295461");
+insert into users values (3,"Harry Potter", "t" , "2017-10-25 10:26:50.295461");
+insert into users values (4,"Jone Smith", "t" , "2017-10-25 10:36:43.324015");
+
+----------------------------------------------------------------------------------------------------------
+
+create table A1 ( ID int(6) Not null ,Name varchar(30) Not null , Address varchar(30) );
+
+insert into A1 values (101,"Raahi","Pune");
+----------------------------------------------------------------------------------------------
+
+create table A2 (Product_ID int not null , Product_Name varchar(20) ,Barcode varchar(30) unique );
+
+insert into A2 values (101, "table","AAA");
+insert into A2 values (102, "Chair","CCC");
+insert into A2 values (,"book","BBB");
+insert into A2 values (104, "Pen","AAA");
+
+
+Error: UNIQUE constraint failed: A2.Barcode
+---------------------------------------------------------------------------------------------
+
+create table A3 (Stud_id int PRIMARY KEY,Stud_name varchar(20) not null,Age int Unique,Class varchar(15) );
+
+
+insert into A3 values (101,"Raahi",23,"FY");
+insert into A3 values (102,"Ram",22,'');
+insert into A3 values (103,"Raksha",23,);
+insert into A3 values (104,24,);
+insert into A3 values (102,"Sachin",21,"FY");
+
+
+--------------------------------------------------------------------------------------------------
+
+create table dept (dept_name varchar(30)NOT NULL ,dept_id varchar(30) PRIMARY KEY) ;
+
+create table EMP (emp_id int PRIMARY KEY , emp_name varchar(20),dept_id int ,foreign key(dept_id) references dept(dept_id)) ;
+;
+
+insert into dept values ("HR","101");
+insert into dept values ("Sales","102");
+
+--------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------
+
+create table departments (
+  DptID int PRIMARY KEY , 
+  DeptName varchar (30)  );
+  
+  
+INSERT into Departments values (101 , " Sales" ) ;
+INSERT into Departments values (102 , " HR " ) ;
+INSERT into Departments values (103, " PR" ) ;
+
+select * from Departments ;
+
+------------------------------------------------------------------------------------------------------------
+
+create table emp ( 
+emp_id int PRIMARY KEY ,
+emp_name varchar (30) , 
+DptID int  , foreign key (DptID ) REFERENCES Departments (DptID) );
+
+
+insert into emp values (41 ,"Rekha " , 101);
+insert into emp values (51 ,"Rahi " , 102);
+insert into emp values (61 ,"Rohan " , 103);
+
+-------------------------------------------------------------------------------------------------------------
+Join Constraint
+
+
+select emp.emp_id ,emp.emp_name ,
+emp.DptID,Departments.DptID,Departments.DeptName 
+from emp
+join Departments ON emp.DptID=Departments.DptID ;
+
+
+
+
+--------------------------------------------------------------------------------------------------------------------
+CHECK constraint
+
+create table book (
+  book_id int PRIMARY KEY ,
+  book_name varchar (30) NOT NULL ,
+  book_price decimal(3,1) check (book_price >= 200 AND book_price <=500 ) );
+  
+  
+  
+insert into book  values (101 ,"Java" ,120);
+insert into book  values (102 ,"Cpp" ,300);
+insert into book  values (103 ,"C#" ,600);
+insert into book  values (103 ,"Wt" ,100);
+insert into book  values (104 ,"Network" ,2000);
+insert into book  values (105 ,"Dotnet" ,200);
+insert into book  values (106 ,"HTML" ,220);
+
+Error: CHECK constraint failed: book_price >= 200 AND book_price <=500
+
+--------------------------------------------------------------------------------------------------------------
+
+Default Constraint 
+
+create table E1 (EID INT PRIMARY KEY , ENAME VARCHAR(50) NOT NULL, EDEPT VARCHAR(50), ESALARY decimal(10,2) DEFAULT 50000.00);
+
+insert into e1 values (101,"Raahi ","Sales" ,12000);
+insert into e1 values (102,"Poonam","HR" );
+
+Error: table e1 has 4 columns but 3 values were supplied
+
+insert into e1 values (103,"Ram","Product ",3000 );
+insert into e1 values (104,"Renuka ","HR ",5000 );
+
+
+select * from e1 ;
+
+
+------------------------------------------------------------------------------------------------------
+Auto increament 
+
+
+
+create table E2(
+  emp_id int auto_increment PRIMARY KEY ,
+  FirstName varchar(50),
+  LastName varchar(50),
+  Email varchar(100) );
+
+
+insert into E2 values('Jhon','Doe','jhon.dpe@example.com ');
+Error: table E2 has 4 columns but 3 values were supplied
+insert into E2 values( 'Jane','Smith','jane.smith@example.com ');
+
+
+
+--------------------------------------------------------------------------------------------------------
+
+create table user ( 
+  user_id int PRIMARY KEY ,
+  user_name varchar (50) UNIQUE ,
+  Email varchar(100) Not NUll ,
+  Age int check (Age >=18 ) );
+  
+  
+create table Products ( 
+  Product_id int PRIMARY KEY ,
+  Product_name varchar (50) NOT NULL ,
+  price int check (price >=0 )
+  stock int default 0);
+  
+  
+create table orders (
+  order_id int PRIMARY KEY ,
+  user_id int ,
+  order_date date default Current_Date ,
+Foreign Key (user_id) references user (user_id)) ;
+  
+  
+create table Transactions (
+  Transaction_id int PRIMARY KEY ,
+  order_id int,
+  Amount decimal (10,2) check (Amount >0) ,
+  PaymentsStatus varchar(50) Default 'PENDING ',
+  Foreign Key (order_id ) references orders (order_id) 
+  ) ;
+  
+----------------------------------------------------------------------------------------------------------------- 
+insert into user(user_id ,user_name ,Email,Age ) 
+values
+(1,'ABC','ABC@gmail.com',24),
+(2,'DEF','DEF@gmail.com',27),
+(3,'GHI','GHI@gmail.com',29),
+(4,'JKL','JKL@gmail.com',31),
+(5,'MNO','MNO@gmail.com',22);
+
+insert into Products(Product_id ,Product_name ,Price,Stock ) 
+values
+(1,'Laptop',799.99,50),
+(2,'Smartphone',499.99,270),
+(3,'Headphone',89.99,290),
+(4,'Keyboard',29.99,310),
+(5,'Mouse',19.99,220);
+
+
+insert into orders(order_id ,user_id ,order_date ) 
+values
+(1,1,Current_Date),
+(2,2,Current_Date),
+(3,3,Current_Date),
+(4,4,Current_Date),
+(5,5,Current_Date);
+
+insert into Transactions(Transaction_id ,order_id ,Amount,PaymentsStatus ) 
+values
+(1,1,799.99,'Pending'),
+(2,2,499.99,'Completed'),
+(3,3,89.99,'Failed'),
+(4,4,29.99,'Pending'),
+(5,5,19.99,'Completed');
+
+-------------------------------------------------------------------------------------------------------------------------

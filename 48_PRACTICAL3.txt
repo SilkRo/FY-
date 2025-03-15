@@ -1,0 +1,92 @@
+NAME:-AKSH BHANUDAS NAIK
+ROLL NO:-48
+STUDENT ID:-5133127
+
+PRACTICAL 3
+
+
+
+create table student(
+  roll_no int,
+  name varchar(30),
+  sub1 int,
+  sub2  int,
+  sub3 int);
+  
+  insert into student values
+  (1,"daya",86,79,88),
+  (2,"rishi",88,78,77),
+  (3,"bhavesh",67,87,82),
+  (4,"jateen",76,87,67),
+  (5,"yabez",82,74,76);
+  
+select *,sum(sub1+sub2+sub3) as total_sum ,
+avg(sub1+sub2+sub3)/3.0 as total_avg,
+min(sub1,sub2,sub3) as minimum,
+max(sub1,sub2,sub3) as maximum,
+count(sub1) as count from student where roll_no=1;
+
+select *,sum(sub1+sub2+sub3) as total_sum ,
+avg(sub1+sub2+sub3)/3.0 as total_avg
+,min(sub1,sub2,sub3) as minimum,
+max(sub1,sub2,sub3) as maximum,
+count(sub1) as count from student where roll_no=2;
+
+select *,sum(sub1+sub2+sub3) as total_sum ,
+avg(sub1+sub2+sub3)/3.0 as total_avg,
+min(sub1,sub2,sub3) as minimum,
+max(sub1,sub2,sub3) as maximum,
+count(sub1) as count from student where roll_no=3;
+
+select *,sum(sub1+sub2+sub3) as total_sum ,
+avg(sub1+sub2+sub3)/3.0 as total_avg,
+min(sub1,sub2,sub3) as minimum,
+max(sub1,sub2,sub3) as maximum,
+count(sub1) as count from student where roll_no=4;
+
+select *,sum(sub1+sub2+sub3) as total_sum ,
+avg(sub1+sub2+sub3)/3.0 as total_avg,
+min(sub1,sub2,sub3) as minimum,
+max(sub1,sub2,sub3) as maximum,
+count(sub1) as count from student where roll_no=5;
+
+create table emp(
+  emp_id int,
+  emp_name varchar(30),
+  job varchar(30),
+  department_id int,
+  hra int,
+  da int,
+  gross int);
+  
+  insert into emp values
+  (100,"john","sales",23,30000,25000,35000),
+  (101,"robert","it",41,35000,30000,45000),
+  (102,"david","retail",21,20000,15000,35000),
+  (103,"william","sales",23,30000,25000,35000),
+  (104,"betty","retail",21,15000,15000,30000);
+  
+select *, sum(hra+da+gross) as total_salary , 
+avg(hra+da+gross)/3.0 as average_salary,
+min(hra,da,gross) as minimum_salary , 
+max(hra,da,gross) as maximum_salary from emp where emp_name="john";
+  
+select *, sum(hra+da+gross) as total_salary ,
+avg(hra+da+gross)/3.0 as average_salary,
+min(hra,da,gross) as minimum_salary ,
+max(hra,da,gross) as maximum_salary from emp where emp_name="robert";
+   
+select *, sum(hra+da+gross) as total_salary ,
+avg(hra+da+gross)/3.0 as average_salary,
+min(hra,da,gross) as minimum_salary ,
+max(hra,da,gross) as maximum_salary from emp where emp_name="david";
+    
+select *, sum(hra+da+gross) as total_salary ,
+avg(hra+da+gross)/3.0 as average_salary,
+min(hra,da,gross) as minimum_salary ,
+max(hra,da,gross) as maximum_salary from emp where emp_name="william";
+    
+select *, sum(hra+da+gross) as total_salary ,
+avg(hra+da+gross)/3.0 as average_salary,
+min(hra,da,gross) as minimum_salary ,
+max(hra,da,gross) as maximum_salary from emp where emp_name="betty";
